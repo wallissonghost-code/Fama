@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#050403" />
   <title>Rank da Fama</title>
-  <link rel="stylesheet" href="style.css?v=20260906-1150" />
+
+  <link rel="stylesheet" href="styles/base.css?v=20260906-1205" />
+  <link rel="stylesheet" href="styles/ranking.css?v=20260906-1205" />
+  <link rel="stylesheet" href="styles/connection.css?v=20260906-1205" />
 </head>
 <body>
   <input id="secretToggle" class="secret-toggle" type="checkbox" aria-hidden="true" />
 
   <main class="app-shell">
     <section class="live-card" aria-label="Rank da Fama">
-      <header class="hero"><h1>RANK DA FAM<label for="secretToggle" id="secretConnect" class="secret-a" aria-label="Abrir conexão">A</label></h1></header>
+      <header class="hero">
+        <h1>RANK DA FAM<label for="secretToggle" id="secretConnect" class="secret-a" aria-label="Abrir conexão">A</label></h1>
+      </header>
 
       <section id="podium" class="podium" aria-label="Top 3">
         <article class="podium-user second">
@@ -55,7 +60,6 @@
   </div>
 
   <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
-  <script src="liveplus-game-session.js?v=20260906-1150"></script>
-  <script src="app.js?v=20260906-1150"></script>
+  <script type="module" src="src/main.js?v=20260906-1205"></script>
 </body>
 </html>
