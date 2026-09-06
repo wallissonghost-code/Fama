@@ -3,11 +3,13 @@ import { LivePlusSession } from './liveplus-session.js';
 import { commandAction, commandAvatar, commandPoints, commandUser } from './live-command.js';
 
 export class LiveBridge {
-  constructor({ store, onRankingChange, onStatusChange }) {
+  constructor({ store, onRankingChange, onStatusChange, onRulesChange }) {
     this.store = store;
     this.onRankingChange = onRankingChange;
     this.onStatusChange = onStatusChange;
+    this.onRulesChange = onRulesChange;
     this.session = null;
+    this.rules = [];
   }
 
   setStatus(text, kind = '') {
@@ -40,12 +42,26 @@ export class LiveBridge {
       this.session.sendState({
         scope: 'initial',
         gameId: GAME_MANIFEST.gameId,
-        ranking: this.store.getTop()
+        ranking: this.store.getTop(),
+        rules: this.rules.length
       });
     });
 
     this.session.addEventListener('command', event => {
       this.handleCommand(event.detail || {});
+    });
+
+    this.session.addEventListener('message', event => {
+      const data = event.detail || {};
+      if (data.type === 'rules_sync' && Array.isArray(data.rules)) {
+        this.rules = data.rules;
+        this.onRulesChange?.(this.rules.slice());
+        this.session?.sendState({
+          scope: 'rules',
+          gameId: GAME_MANIFEST.gameId,
+          rules: this.rules.length
+        });
+      }
     });
 
     this.session.addEventListener('reconnecting', () => {
@@ -71,12 +87,7 @@ export class LiveBridge {
     const executed = Boolean(user && amount);
 
     if (executed) {
-      this.store.registerGift({
-        id: user,
-        handle: user,
-        avatar,
-        amount
-      });
+      this.store.registerGift({ id: user, handle: user, avatar, amount });
       this.onRankingChange?.();
     }
 
