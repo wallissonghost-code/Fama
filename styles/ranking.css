@@ -52,20 +52,94 @@
   padding: 3px;
   background: linear-gradient(145deg, #f4f4f4, #707070 65%, #d7d7d7);
   box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  isolation: isolate;
+}
+
+.podium-aura {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .podium-user.first .avatar-wrap {
   width: 82px;
   height: 82px;
-  background: linear-gradient(145deg, #fff0a2, #ce941b 55%, #7f4a00);
-  box-shadow: 0 0 0 4px rgba(215,159,38,.08), 0 12px 34px rgba(0,0,0,.5);
+  background: linear-gradient(145deg, #fff7bf, #e6b42d 48%, #8d5200);
+  box-shadow:
+    0 0 0 3px rgba(255,211,82,.16),
+    0 0 22px rgba(255,187,36,.62),
+    0 0 48px rgba(255,153,0,.28),
+    0 14px 34px rgba(0,0,0,.5);
+  animation: first-float 2.8s ease-in-out infinite;
+}
+
+.podium-user.first .podium-aura {
+  inset: -18px;
+  border: 2px solid rgba(255,210,81,.56);
+  box-shadow:
+    0 0 18px rgba(255,201,65,.7),
+    inset 0 0 18px rgba(255,187,28,.28);
+  animation: first-aura 1.8s ease-in-out infinite;
+}
+
+.podium-user.first::before,
+.podium-user.first::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffe89b;
+  box-shadow:
+    -34px 18px 0 rgba(255,224,125,.9),
+    39px 7px 0 rgba(255,191,40,.8),
+    -20px -15px 0 rgba(255,245,193,.75),
+    28px -24px 0 rgba(255,207,80,.72),
+    7px 39px 0 rgba(255,181,24,.7);
+  pointer-events: none;
+  animation: sparkle 2.3s ease-in-out infinite;
+}
+
+.podium-user.first::after {
+  animation-delay: 1.1s;
+  transform: scale(.65);
+  opacity: .6;
+}
+
+.podium-user.second .avatar-wrap {
+  box-shadow:
+    0 0 0 2px rgba(224,232,244,.12),
+    0 0 18px rgba(205,218,235,.28),
+    0 10px 30px rgba(0,0,0,.45);
+}
+
+.podium-user.second .podium-aura {
+  inset: -10px;
+  border: 1px solid rgba(225,232,241,.34);
+  box-shadow: 0 0 14px rgba(210,222,238,.22);
+  animation: second-aura 2.7s ease-in-out infinite;
 }
 
 .podium-user.third .avatar-wrap {
   background: linear-gradient(145deg, #ffd1a6, #ab5d31 60%, #653019);
+  box-shadow:
+    0 0 12px rgba(207,111,54,.16),
+    0 10px 30px rgba(0,0,0,.45);
+}
+
+.podium-user.third .podium-aura {
+  inset: -7px;
+  border: 1px solid rgba(217,129,75,.18);
+  box-shadow: 0 0 8px rgba(217,129,75,.12);
 }
 
 .avatar {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -83,6 +157,7 @@
 
 .rank-badge {
   position: absolute;
+  z-index: 2;
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
@@ -101,8 +176,9 @@
 }
 
 .first .rank-badge {
-  background: linear-gradient(180deg, #ffe98a, #c78c16);
+  background: linear-gradient(180deg, #fff19b, #d69617);
   color: #261700;
+  box-shadow: 0 0 14px rgba(255,190,35,.45), 0 5px 14px rgba(0,0,0,.45);
 }
 
 .third .rank-badge {
@@ -111,6 +187,8 @@
 }
 
 .podium-user h2 {
+  position: relative;
+  z-index: 3;
   font-size: 10px;
   margin: 15px 0 0;
   white-space: nowrap;
@@ -121,6 +199,8 @@
 }
 
 .podium-points {
+  position: relative;
+  z-index: 3;
   margin: 4px 0 0;
   font-size: 9px;
   font-weight: 800;
@@ -172,6 +252,37 @@
   font-weight: 800;
   color: #d9ac55;
   white-space: nowrap;
+}
+
+@keyframes first-aura {
+  0%,100% { transform: scale(.96); opacity: .62; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes second-aura {
+  0%,100% { transform: scale(.98); opacity: .42; }
+  50% { transform: scale(1.04); opacity: .72; }
+}
+
+@keyframes first-float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes sparkle {
+  0%,100% { opacity: .22; transform: scale(.65) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1) rotate(16deg); }
+  70% { opacity: .35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .podium-user.first .avatar-wrap,
+  .podium-user.first .podium-aura,
+  .podium-user.second .podium-aura,
+  .podium-user.first::before,
+  .podium-user.first::after {
+    animation: none;
+  }
 }
 
 @media (max-height: 760px) {
