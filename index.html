@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#050403" />
   <title>Rank da Fama</title>
-  <link rel="stylesheet" href="style.css?v=20260906-1142" />
+  <link rel="stylesheet" href="style.css?v=20260906-1150" />
 </head>
 <body>
   <input id="secretToggle" class="secret-toggle" type="checkbox" aria-hidden="true" />
@@ -13,8 +13,31 @@
   <main class="app-shell">
     <section class="live-card" aria-label="Rank da Fama">
       <header class="hero"><h1>RANK DA FAM<label for="secretToggle" id="secretConnect" class="secret-a" aria-label="Abrir conexão">A</label></h1></header>
-      <section id="podium" class="podium" aria-label="Top 3"></section>
-      <ol id="rankingList" class="ranking-list" aria-label="Posições 4 a 10"></ol>
+
+      <section id="podium" class="podium" aria-label="Top 3">
+        <article class="podium-user second">
+          <div class="avatar-wrap"><div class="avatar avatar-empty"></div><span class="rank-badge">2</span></div>
+          <h2>@user</h2><p class="podium-points">0 pts</p>
+        </article>
+        <article class="podium-user first">
+          <div class="avatar-wrap"><div class="avatar avatar-empty"></div><span class="rank-badge">1</span></div>
+          <h2>@user</h2><p class="podium-points">0 pts</p>
+        </article>
+        <article class="podium-user third">
+          <div class="avatar-wrap"><div class="avatar avatar-empty"></div><span class="rank-badge">3</span></div>
+          <h2>@user</h2><p class="podium-points">0 pts</p>
+        </article>
+      </section>
+
+      <ol id="rankingList" class="ranking-list" aria-label="Posições 4 a 10">
+        <li class="rank-row"><span class="rank-number">4</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+        <li class="rank-row"><span class="rank-number">5</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+        <li class="rank-row"><span class="rank-number">6</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+        <li class="rank-row"><span class="rank-number">7</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+        <li class="rank-row"><span class="rank-number">8</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+        <li class="rank-row"><span class="rank-number">9</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+        <li class="rank-row"><span class="rank-number">10</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+      </ol>
     </section>
   </main>
 
@@ -32,7 +55,7 @@
   </div>
 
   <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
-  <script src="liveplus-game-session.js?v=20260906-1142"></script>
-  <script src="app.js?v=20260906-1142"></script>
+  <script src="liveplus-game-session.js?v=20260906-1150"></script>
+  <script src="app.js?v=20260906-1150"></script>
 </body>
 </html>
