@@ -2,14 +2,11 @@ const STORAGE_KEY='fama-donors-v2';
 
 const seed=[];
 let donors=load();
-let period='all';
 
 function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||seed}catch{return seed}}
 function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(donors))}
-function scoreOf(d){return period==='today'?d.today:period==='10d'?d.last10d:d.total}
-function fmt(n){return new Intl.NumberFormat('pt-BR').format(n)}
-function top(){return [...donors].filter(d=>scoreOf(d)>0).sort((a,b)=>scoreOf(b)-scoreOf(a)).slice(0,10)}
-function slot(rank,d){return d||{id:`slot-${rank}`,handle:'@user',name:'',avatar:'',total:0,today:0,last10d:0,placeholder:true}}
+function top(){return [...donors].filter(d=>d.total>0).sort((a,b)=>b.total-a.total).slice(0,10)}
+function slot(rank,d){return d||{id:`slot-${rank}`,handle:'@user',name:'',avatar:'',total:0,placeholder:true}}
 
 function render(){
   const actual=top();
@@ -25,7 +22,7 @@ function render(){
       : `<div class="avatar avatar-empty" aria-label="Espaço para foto"></div>`;
     return `<article class="podium-user ${cls}">
       <div class="avatar-wrap">${avatar}<span class="rank-badge">${rank}</span></div>
-      <h2>${d.handle}</h2><p>${fmt(scoreOf(d))} pts</p>
+      <h2>${d.handle}</h2>
     </article>`;
   }).join('');
 
@@ -33,16 +30,8 @@ function render(){
     <li class="rank-row ${d.placeholder?'placeholder':''}">
       <span class="rank-number">${i+4}</span>
       <div class="identity"><strong>${d.handle}</strong></div>
-      <div class="score"><strong>${fmt(scoreOf(d))} pts</strong></div>
     </li>`).join('');
 }
-
-document.querySelectorAll('.period-tab').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.period-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  period=btn.dataset.period;
-  render();
-}));
 
 // Bloqueia gestos de zoom comuns no iOS/Safari.
 document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
@@ -59,14 +48,12 @@ window.Fama={
   registerGift({id,handle,name,avatar,amount}){
     const now=Date.now();
     let d=donors.find(x=>x.id===id||x.handle===handle);
-    if(!d){d={id:id||handle,handle,name:name||handle,avatar:avatar||'',total:0,today:0,last10d:0,lastSeen:now};donors.push(d)}
+    if(!d){d={id:id||handle,handle,name:name||handle,avatar:avatar||'',total:0,lastSeen:now};donors.push(d)}
     d.handle=handle||d.handle;
     d.name=name||d.name;
     d.avatar=avatar||d.avatar;
     d.lastSeen=now;
     d.total+=(Number(amount)||0);
-    d.today+=(Number(amount)||0);
-    d.last10d+=(Number(amount)||0);
     save();render();return d;
   },
   markViewer({id,handle}){
