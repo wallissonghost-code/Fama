@@ -5,21 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#050403" />
   <title>Rank da Fama</title>
-  <link rel="stylesheet" href="style.css?v=20260906-1130" />
+  <link rel="stylesheet" href="style.css?v=20260906-1142" />
 </head>
 <body>
+  <input id="secretToggle" class="secret-toggle" type="checkbox" aria-hidden="true" />
+
   <main class="app-shell">
     <section class="live-card" aria-label="Rank da Fama">
-      <header class="hero"><h1>RANK DA FAM<span id="secretConnect" class="secret-a" role="button" tabindex="0" aria-label="Abrir conexão">A</span></h1></header>
+      <header class="hero"><h1>RANK DA FAM<label for="secretToggle" id="secretConnect" class="secret-a" aria-label="Abrir conexão">A</label></h1></header>
       <section id="podium" class="podium" aria-label="Top 3"></section>
       <ol id="rankingList" class="ranking-list" aria-label="Posições 4 a 10"></ol>
     </section>
   </main>
 
-  <div id="connectModal" class="connect-modal" hidden>
-    <div class="connect-backdrop" data-close-connect></div>
+  <div id="connectModal" class="connect-modal">
+    <label for="secretToggle" class="connect-backdrop" aria-label="Fechar painel"></label>
     <section class="connect-panel" role="dialog" aria-modal="true" aria-labelledby="connectTitle">
-      <button id="closeConnect" class="connect-close" type="button" aria-label="Fechar">×</button>
+      <label for="secretToggle" id="closeConnect" class="connect-close" aria-label="Fechar">×</label>
       <span class="connect-kicker">LIVE+</span>
       <h2 id="connectTitle">Conectar painel</h2>
       <p>Digite o código da partida gerado no Projeto Daniel.</p>
@@ -30,7 +32,7 @@
   </div>
 
   <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
-  <script src="liveplus-game-session.js?v=20260906-1130"></script>
-  <script src="app.js?v=20260906-1130"></script>
+  <script src="liveplus-game-session.js?v=20260906-1142"></script>
+  <script src="app.js?v=20260906-1142"></script>
 </body>
 </html>
