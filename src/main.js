@@ -3,9 +3,11 @@ import { RankingStore } from './ranking-store.js';
 import { renderRanking } from './ranking-view.js';
 import { LiveBridge } from './live-bridge.js';
 import { setupConnectionPanel } from './connection-panel.js';
+import { setupScoreHud } from './score-hud.js';
 
 const store = new RankingStore(STORAGE_KEYS.ranking);
 const refresh = () => renderRanking(store.getTop());
+const scoreHud = setupScoreHud();
 
 let bridge;
 const panel = setupConnectionPanel({
@@ -14,10 +16,12 @@ const panel = setupConnectionPanel({
       bridge = new LiveBridge({
         store,
         onRankingChange: refresh,
-        onStatusChange: setStatus
+        onStatusChange: setStatus,
+        onRulesChange: rules => scoreHud.syncRules(rules)
       });
     } else {
       bridge.onStatusChange = setStatus;
+      bridge.onRulesChange = rules => scoreHud.syncRules(rules);
     }
 
     return bridge.connect(code);
@@ -46,6 +50,8 @@ window.Fama = {
   markViewer,
   getTop: () => store.getTop(),
   connect: panel.connect,
+  setScoreHudVisible: scoreHud.setVisible,
+  syncScoreRules: scoreHud.syncRules,
   resetDemo
 };
 
