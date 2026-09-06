@@ -2,20 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#090a12" />
-  <title>Fama — Top Doadores</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+  <meta name="theme-color" content="#080706" />
+  <title>Fama — Rank de Doadores</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app-shell">
     <section class="live-card" aria-label="Ranking de fama da live">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">RANK DE FAMA</p>
-          <h1>Top doadores</h1>
-        </div>
-        <div class="live-pill"><span></span> AO VIVO</div>
+      <header class="hero">
+        <p class="eyebrow">RANK DE</p>
+        <h1>DOADORES</h1>
+        <p class="subtitle">VOCÊS FAZEM ISSO POSSÍVEL</p>
       </header>
 
       <div class="period-tabs" role="tablist" aria-label="Período do ranking">
@@ -24,19 +22,17 @@
         <button class="period-tab" data-period="10d" role="tab">10 dias</button>
       </div>
 
-      <section id="podium" class="podium" aria-label="Pódio"></section>
+      <section id="podium" class="podium" aria-label="Top 3"></section>
 
       <section class="ranking-section">
         <div class="ranking-head">
           <span>TOP 10</span>
-          <span>Presentes acumulados</span>
+          <span>PONTOS</span>
         </div>
         <ol id="rankingList" class="ranking-list"></ol>
       </section>
 
-      <footer class="footer-note">
-        A fama fica registrada. Quando um apoiador voltar à live, o ranking reconhece seu histórico.
-      </footer>
+      <footer class="footer-note">GRATIDÃO SEMPRE</footer>
     </section>
   </main>
 
