@@ -7,6 +7,7 @@ function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||seed}c
 function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(donors))}
 function top(){return [...donors].filter(d=>d.total>0).sort((a,b)=>b.total-a.total).slice(0,10)}
 function slot(rank,d){return d||{id:`slot-${rank}`,handle:'@user',name:'',avatar:'',total:0,placeholder:true}}
+function fmt(n){return new Intl.NumberFormat('pt-BR').format(Number(n)||0)}
 
 function render(){
   const actual=top();
@@ -16,24 +17,25 @@ function render(){
 
   podium.innerHTML=order.map((d,i)=>{
     const rank=i===1?1:i===0?2:3;
-    const cls=rank===1?'first':rank===3?'third':'';
+    const cls=rank===1?'first':rank===3?'third':'second';
     const avatar=d.avatar
       ? `<img class="avatar" src="${d.avatar}" alt="${d.handle}">`
       : `<div class="avatar avatar-empty" aria-label="Espaço para foto"></div>`;
     return `<article class="podium-user ${cls}">
       <div class="avatar-wrap">${avatar}<span class="rank-badge">${rank}</span></div>
       <h2>${d.handle}</h2>
+      <p class="podium-points">${fmt(d.total)} pts</p>
     </article>`;
   }).join('');
 
   document.querySelector('#rankingList').innerHTML=list.slice(3).map((d,i)=>`
     <li class="rank-row ${d.placeholder?'placeholder':''}">
       <span class="rank-number">${i+4}</span>
-      <div class="identity"><strong>${d.handle}</strong></div>
+      <strong>${d.handle}</strong>
+      <span class="row-points">${fmt(d.total)} pts</span>
     </li>`).join('');
 }
 
-// Bloqueia gestos de zoom comuns no iOS/Safari.
 document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
 document.addEventListener('gesturechange',e=>e.preventDefault(),{passive:false});
 document.addEventListener('gestureend',e=>e.preventDefault(),{passive:false});
