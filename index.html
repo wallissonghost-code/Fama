@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#050403" />
   <title>Rank da Fama</title>
-  <link rel="stylesheet" href="styles/base.css?v=20260906-1258" />
-  <link rel="stylesheet" href="styles/ranking.css?v=20260906-1258" />
-  <link rel="stylesheet" href="styles/connection.css?v=20260906-1258" />
+  <link rel="stylesheet" href="styles/base.css?v=20260906-1312" />
+  <link rel="stylesheet" href="styles/ranking.css?v=20260906-1312" />
+  <link rel="stylesheet" href="styles/rewards.css?v=20260906-1312" />
+  <link rel="stylesheet" href="styles/connection.css?v=20260906-1312" />
 </head>
 <body>
   <input id="secretToggle" class="secret-toggle" type="checkbox" aria-hidden="true" />
@@ -21,9 +22,14 @@
     <ol id="rankingList" class="ranking-list" aria-label="Posições 4 a 10">
       <li class="rank-row"><span class="rank-number">4</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">5</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">6</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">7</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">8</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">9</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">10</span><strong>@user</strong><span class="row-points">0 pts</span></li>
     </ol>
+    <section class="reward-legend" aria-label="Legenda de pontuação">
+      <div class="reward-chip"><strong>Flor</strong>&nbsp;=&nbsp;X pts</div>
+      <div class="reward-chip"><strong>Presente</strong>&nbsp;=&nbsp;X pts</div>
+      <div class="reward-chip"><strong>Like</strong>&nbsp;=&nbsp;X pts</div>
+    </section>
   </section></main>
   <div id="connectModal" class="connect-modal"><label for="secretToggle" class="connect-backdrop" aria-label="Fechar painel"></label><section class="connect-panel" role="dialog" aria-modal="true" aria-labelledby="connectTitle"><label for="secretToggle" id="closeConnect" class="connect-close" aria-label="Fechar">×</label><span class="connect-kicker">LIVE+</span><h2 id="connectTitle">Conectar painel</h2><p>Digite o código da partida gerado no Projeto Daniel.</p><input id="panelCode" class="connect-code" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="9" placeholder="ABCD-EFGH" /><button id="connectPanel" class="connect-button" type="button">Conectar</button><div id="panelStatus" class="connect-status">Offline</div></section></div>
   <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
-  <script type="module" src="src/main.js?v=20260906-1258"></script>
+  <script type="module" src="src/main.js?v=20260906-1312"></script>
 </body>
 </html>
