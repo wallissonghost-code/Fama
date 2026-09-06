@@ -12,8 +12,11 @@ function emptySlot(rank) {
 }
 
 function safeAvatarUrl(value = '') {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+
   try {
-    const url = new URL(String(value), window.location.href);
+    const url = new URL(raw, window.location.href);
     return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
   } catch {
     return '';
@@ -27,12 +30,23 @@ function createPodiumCard(donor, rank) {
   const avatarWrap = document.createElement('div');
   avatarWrap.className = 'avatar-wrap';
 
+  const aura = document.createElement('span');
+  aura.className = 'podium-aura';
+  aura.setAttribute('aria-hidden', 'true');
+  avatarWrap.appendChild(aura);
+
   const avatarUrl = safeAvatarUrl(donor.avatar);
   if (avatarUrl) {
     const image = document.createElement('img');
     image.className = 'avatar';
     image.src = avatarUrl;
-    image.alt = donor.handle || '@user';
+    image.alt = donor.handle || 'Foto do usuário';
+    image.addEventListener('error', () => {
+      const empty = document.createElement('div');
+      empty.className = 'avatar avatar-empty';
+      empty.setAttribute('aria-label', 'Espaço para foto');
+      image.replaceWith(empty);
+    }, { once: true });
     avatarWrap.appendChild(image);
   } else {
     const empty = document.createElement('div');
