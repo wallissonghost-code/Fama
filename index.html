@@ -5,61 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
   <meta name="theme-color" content="#050403" />
   <title>Rank da Fama</title>
-
-  <link rel="stylesheet" href="styles/base.css?v=20260906-1208" />
-  <link rel="stylesheet" href="styles/ranking.css?v=20260906-1208" />
-  <link rel="stylesheet" href="styles/connection.css?v=20260906-1208" />
+  <link rel="stylesheet" href="styles/base.css?v=20260906-1248" />
+  <link rel="stylesheet" href="styles/ranking.css?v=20260906-1248" />
+  <link rel="stylesheet" href="styles/connection.css?v=20260906-1248" />
 </head>
 <body>
   <input id="secretToggle" class="secret-toggle" type="checkbox" aria-hidden="true" />
-
-  <main class="app-shell">
-    <section class="live-card" aria-label="Rank da Fama">
-      <header class="hero">
-        <h1>RANK DA FAM<label for="secretToggle" id="secretConnect" class="secret-a" aria-label="Abrir conexão">A</label></h1>
-      </header>
-
-      <section id="podium" class="podium" aria-label="Top 3">
-        <article class="podium-user second">
-          <div class="avatar-wrap"><div class="podium-aura"></div><div class="avatar avatar-empty"></div><span class="rank-badge">2</span></div>
-          <h2>@user</h2><p class="podium-points">0 pts</p>
-        </article>
-        <article class="podium-user first">
-          <div class="avatar-wrap"><div class="podium-aura"></div><div class="avatar avatar-empty"></div><span class="rank-badge">1</span></div>
-          <h2>@user</h2><p class="podium-points">0 pts</p>
-        </article>
-        <article class="podium-user third">
-          <div class="avatar-wrap"><div class="podium-aura"></div><div class="avatar avatar-empty"></div><span class="rank-badge">3</span></div>
-          <h2>@user</h2><p class="podium-points">0 pts</p>
-        </article>
-      </section>
-
-      <ol id="rankingList" class="ranking-list" aria-label="Posições 4 a 10">
-        <li class="rank-row"><span class="rank-number">4</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-        <li class="rank-row"><span class="rank-number">5</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-        <li class="rank-row"><span class="rank-number">6</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-        <li class="rank-row"><span class="rank-number">7</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-        <li class="rank-row"><span class="rank-number">8</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-        <li class="rank-row"><span class="rank-number">9</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-        <li class="rank-row"><span class="rank-number">10</span><strong>@user</strong><span class="row-points">0 pts</span></li>
-      </ol>
+  <main class="app-shell"><section class="live-card" aria-label="Rank da Fama">
+    <header class="hero"><h1>RANK DA FAM<label for="secretToggle" id="secretConnect" class="secret-a" aria-label="Abrir conexão">A</label></h1></header>
+    <section id="podium" class="podium" aria-label="Top 3">
+      <article class="podium-user second"><div class="podium-stage"><div class="avatar-wrap"><div class="avatar avatar-empty"></div></div><img class="podium-frame" src="CB5B2A1A-CCB0-46A9-932B-7EEF9803E089.png" alt=""></div><h2>@user</h2><p class="podium-points">0 pts</p></article>
+      <article class="podium-user first"><div class="podium-stage"><div class="avatar-wrap"><div class="avatar avatar-empty"></div></div><img class="podium-frame" src="180B73AE-604F-4094-8A0A-63DC54693CA0.png" alt=""></div><h2>@user</h2><p class="podium-points">0 pts</p></article>
+      <article class="podium-user third"><div class="podium-stage"><div class="avatar-wrap"><div class="avatar avatar-empty"></div></div><img class="podium-frame" src="AE862B77-A154-43D0-ADAD-AAFB306335E4.png" alt=""></div><h2>@user</h2><p class="podium-points">0 pts</p></article>
     </section>
-  </main>
-
-  <div id="connectModal" class="connect-modal">
-    <label for="secretToggle" class="connect-backdrop" aria-label="Fechar painel"></label>
-    <section class="connect-panel" role="dialog" aria-modal="true" aria-labelledby="connectTitle">
-      <label for="secretToggle" id="closeConnect" class="connect-close" aria-label="Fechar">×</label>
-      <span class="connect-kicker">LIVE+</span>
-      <h2 id="connectTitle">Conectar painel</h2>
-      <p>Digite o código da partida gerado no Projeto Daniel.</p>
-      <input id="panelCode" class="connect-code" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="9" placeholder="ABCD-EFGH" />
-      <button id="connectPanel" class="connect-button" type="button">Conectar</button>
-      <div id="panelStatus" class="connect-status">Offline</div>
-    </section>
-  </div>
-
+    <ol id="rankingList" class="ranking-list" aria-label="Posições 4 a 10">
+      <li class="rank-row"><span class="rank-number">4</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">5</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">6</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">7</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">8</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">9</span><strong>@user</strong><span class="row-points">0 pts</span></li><li class="rank-row"><span class="rank-number">10</span><strong>@user</strong><span class="row-points">0 pts</span></li>
+    </ol>
+  </section></main>
+  <div id="connectModal" class="connect-modal"><label for="secretToggle" class="connect-backdrop" aria-label="Fechar painel"></label><section class="connect-panel" role="dialog" aria-modal="true" aria-labelledby="connectTitle"><label for="secretToggle" id="closeConnect" class="connect-close" aria-label="Fechar">×</label><span class="connect-kicker">LIVE+</span><h2 id="connectTitle">Conectar painel</h2><p>Digite o código da partida gerado no Projeto Daniel.</p><input id="panelCode" class="connect-code" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="9" placeholder="ABCD-EFGH" /><button id="connectPanel" class="connect-button" type="button">Conectar</button><div id="panelStatus" class="connect-status">Offline</div></section></div>
   <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
-  <script type="module" src="src/main.js?v=20260906-1208"></script>
+  <script type="module" src="src/main.js?v=20260906-1248"></script>
 </body>
 </html>
