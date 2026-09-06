@@ -1,16 +1,18 @@
 # Fama
 
-Ranking vertical de fama/doadores para lives.
+Ranking vertical de fama/doadores para lives, integrado ao ecossistema Live+ do Projeto Daniel.
 
-## MVP atual
+## Estado atual
 
-- Interface 9:16 para celular/overlay vertical.
-- Top 10 de doadores.
-- Destaque visual para Top 3.
-- Foto, @, pontuação de fama e última aparição.
-- Abas: Fama acumulada, Hoje e 10 dias.
-- Persistência local para demonstração.
-- API simples no navegador para receber eventos da live:
+- Interface vertical 9:16.
+- Top 10 com destaque visual para Top 3.
+- Top 3 com espaço para avatar, @ e pontos.
+- Posições 4–10 com @ e pontos.
+- Painel de conexão oculto atrás da última letra `A` de `FAMA`.
+- Conexão por código de 8 caracteres com o painel do Projeto Daniel via PeerJS/Live+.
+- Reconexão automática limitada na sessão.
+- Persistência local do ranking para o MVP.
+- API simples disponível em `window.Fama`.
 
 ```js
 Fama.registerGift({
@@ -19,19 +21,23 @@ Fama.registerGift({
   name: 'Usuario',
   avatar: 'https://...',
   amount: 100
-})
+});
 
-Fama.markViewer({ id: 'tiktok-user-id', handle: '@usuario' })
+Fama.markViewer({ id: 'tiktok-user-id', handle: '@usuario' });
 ```
 
-## Próxima etapa para produção
+## Organização
 
-A persistência local deve ser substituída por banco de dados real (por exemplo Supabase/Firebase), porque localStorage só guarda os dados no dispositivo/navegador atual. Também é necessário um conector de eventos da plataforma de live para registrar entrada de usuário e presentes em tempo real.
+O projeto foi modularizado para evitar concentrar interface, dados e conexão no mesmo arquivo. A descrição completa está em `ARCHITECTURE.md`.
 
-Modelo recomendado de dados:
+Resumo:
 
-- `users`: id da plataforma, @, nome, avatar, primeira/última aparição.
-- `gift_events`: usuário, valor/moedas, presente, timestamp, live_id.
-- Ranking calculado por soma de eventos nos intervalos desejados.
+```text
+styles/  -> estilos separados por responsabilidade
+src/     -> ranking, conexão Live+, painel e inicialização
+index.html -> estrutura da página
+```
 
-Assim, alguém que foi top doador ontem, há 10 dias ou anteriormente continua reconhecido quando entrar novamente na live.
+## Persistência
+
+O MVP ainda usa `localStorage`. Isso mantém os dados somente no navegador atual. Para o ranking persistir entre dias, dispositivos e diferentes máquinas da live, a próxima evolução deve substituir a camada de `ranking-store.js` por um backend/banco persistente.
