@@ -1,9 +1,9 @@
-import { STORAGE_KEYS } from './config.js';
-import { RankingStore } from './ranking-store.js';
-import { renderRanking } from './ranking-view.js';
-import { LiveBridge } from './live-bridge.js';
-import { setupConnectionPanel } from './connection-panel.js';
-import { setupScoreHud } from './score-hud.js';
+import { STORAGE_KEYS } from './config.js?v=20260906-1332';
+import { RankingStore } from './ranking-store.js?v=20260906-1332';
+import { renderRanking } from './ranking-view.js?v=20260906-1332';
+import { LiveBridge } from './live-bridge.js?v=20260906-1332';
+import { setupConnectionPanel } from './connection-panel.js?v=20260906-1332';
+import { setupScoreHud } from './score-hud.js?v=20260906-1332';
 
 const store = new RankingStore(STORAGE_KEYS.ranking);
 const refresh = () => renderRanking(store.getTop());
@@ -23,7 +23,6 @@ const panel = setupConnectionPanel({
       bridge.onStatusChange = setStatus;
       bridge.onRulesChange = rules => scoreHud.syncRules(rules);
     }
-
     return bridge.connect(code);
   }
 });
