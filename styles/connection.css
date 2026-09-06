@@ -1,0 +1,102 @@
+.connect-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  place-items: center;
+  padding: 22px;
+}
+
+.secret-toggle:checked ~ .connect-modal {
+  display: grid;
+}
+
+.connect-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.78);
+  backdrop-filter: blur(8px);
+}
+
+.connect-panel {
+  position: relative;
+  width: min(100%, 330px);
+  padding: 26px 22px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(214,158,56,.35);
+  background: linear-gradient(180deg, #15110b, #070706);
+  box-shadow: 0 25px 80px #000;
+  text-align: center;
+}
+
+.connect-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #8e8679;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.connect-kicker {
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: #c89539;
+  font-weight: 900;
+}
+
+.connect-panel h2 {
+  margin: 7px 0 6px;
+  font-size: 21px;
+}
+
+.connect-panel p {
+  margin: 0 auto 18px;
+  max-width: 250px;
+  color: #8f8a81;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.connect-code {
+  width: 100%;
+  height: 52px;
+  border: 1px solid rgba(215,159,55,.45);
+  border-radius: 11px;
+  background: #050505;
+  color: #f1c86f;
+  text-align: center;
+  font: 900 21px/1 monospace;
+  letter-spacing: .14em;
+  outline: none;
+}
+
+.connect-code:focus {
+  border-color: #d7a33d;
+  box-shadow: 0 0 0 3px rgba(215,163,61,.08);
+}
+
+.connect-button {
+  width: 100%;
+  height: 44px;
+  margin-top: 11px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #e4b44d, #9a6416);
+  color: #170e02;
+  font-weight: 950;
+}
+
+.connect-status {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #777;
+}
+
+.connect-status.ok { color: #7fc88b; }
+.connect-status.warn { color: #d7ad57; }
+.connect-status.err { color: #d87a70; }
