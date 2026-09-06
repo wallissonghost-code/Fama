@@ -14,7 +14,12 @@ export class RankingStore {
   }
 
   save() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.donors));
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.donors));
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   getTop(limit = 10) {
